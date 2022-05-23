@@ -20,9 +20,8 @@ nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 6rem;
   margin: 0;
-  padding: 0;
+  padding: 1rem;
 }
 
 .nav-logo {
