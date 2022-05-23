@@ -9,7 +9,7 @@ import ShoppingCart from "./components/ShoppingCart";
 
 const RouteSwitch = () => {
   return (
-    <div>
+    <div className="router">
       <BrowserRouter>
         <NavBar />
         <Routes>
