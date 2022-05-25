@@ -1,4 +1,5 @@
 import React from "react";
+import shoppingImage from "../assets/shoppingImage.svg";
 
 const Home = () => {
   return (
@@ -7,7 +8,7 @@ const Home = () => {
       <div className="home-main">
         {/* Image by <a href="https://pixabay.com/users/mohamed_hassan-5229782/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3060480">mohamed Hassan</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=3060480">Pixabay</a> */}
         <img
-          src="https://pixabay.com/get/ge194f5af678410115e098532efdc727989e2c2589a03e153a758cfea7b1f3a05ea5e2cf3f2abaa3b1632306b1a95e506.jpg"
+          src={shoppingImage}
           alt="Man with megaphone shouting sale!"
           className="home-image"
         />
