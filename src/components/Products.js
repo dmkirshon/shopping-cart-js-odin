@@ -1,3 +1,4 @@
+import { render } from "@testing-library/react";
 import React, { useEffect, useState } from "react";
 
 const Products = () => {
@@ -9,7 +10,6 @@ const Products = () => {
       const productsData = await productsFetch.json();
 
       setProducts(productsData);
-      console.log(productsData);
     };
     fetchProducts().catch(console.error);
   }, []);
@@ -17,19 +17,27 @@ const Products = () => {
   const displayProducts = () => {
     return products.map((productInfo) => {
       return (
-        <div key={productInfo.id}>
-          <img className="products-image" src={productInfo.image} />
-          <p>{productInfo.title}</p>
-          <p>{productInfo.rating.rate} ⭐️</p>
+        <div key={productInfo.id} className="products-selection">
+          <img
+            className="products-image"
+            src={productInfo.image}
+            alt={productInfo.title}
+          />
+          <div className="products-information">
+            <p className="products-description">{productInfo.title}</p>
+            <p className="products-rating">{productInfo.rating.rate} ⭐️</p>
+          </div>
         </div>
       );
     });
   };
 
+  const renderProducts = displayProducts();
+
   return (
     <div className="products">
       <h1>Products</h1>
-      <div className="products-main">{displayProducts()}</div>
+      <div className="products-main">{renderProducts}</div>
     </div>
   );
 };
