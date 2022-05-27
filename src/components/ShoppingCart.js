@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const ShoppingCart = () => {
+const ShoppingCart = ({ cartSize }) => {
+  const shoppingCartEmptyMessage = () => {
+    return (
+      <p className="shopping-cart-empty">
+        Shopping cart is empty! Add{" "}
+        <Link to="/products">ShopDrop products</Link> to checkout!
+      </p>
+    );
+  };
+
   return (
     <div className="shopping-cart">
-      <p>Shopping cart is empty! Add products to checkout!</p>
+      {cartSize === 0 ? shoppingCartEmptyMessage() : null}
     </div>
   );
 };
