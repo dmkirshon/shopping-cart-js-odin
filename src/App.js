@@ -11,7 +11,15 @@ import ProductDetails from "./components/ProductDetails";
 import "./App.css";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState([]);
+  const [shoppingCart, setShoppingCart] = useState([
+    { id: 1, count: 2 },
+    { id: 2, count: 2 },
+    { id: 3, count: 2 },
+    { id: 4, count: 2 },
+  ]);
+
+  const addToShoppingCart = () => {};
+  const deleteFromShoppingCart = () => {};
 
   return (
     <div className="App">
@@ -23,7 +31,7 @@ function App() {
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route
             path="/cart"
-            element={<ShoppingCart cartSize={shoppingCart.length} />}
+            element={<ShoppingCart cartProducts={shoppingCart} />}
           />
         </Routes>
       </BrowserRouter>
