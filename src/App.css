@@ -209,8 +209,11 @@ nav a:visited{
 .product {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  flex: 1;
+
+  background-color: whitesmoke;
 }
 
 .product-title {
