@@ -11,24 +11,47 @@ import ProductDetails from "./components/ProductDetails";
 import "./App.css";
 
 function App() {
-  const [shoppingCart, setShoppingCart] = useState([
-    { id: 1, count: 2 },
-    { id: 2, count: 2 },
-    { id: 3, count: 2 },
-    { id: 4, count: 2 },
-  ]);
+  const [shoppingCart, setShoppingCart] = useState([]);
 
-  const addToShoppingCart = () => {};
+  const updateShoppingCart = (id, count) => {
+    setShoppingCart((prevCart) => {
+      const cartEmpty = prevCart.length === 0;
+      const productNotInCart =
+        prevCart.filter((cartProduct) => cartProduct.id === id).length === 0;
+
+      if (cartEmpty) {
+        return [{ id, count }];
+      } else if (productNotInCart) {
+        return [...prevCart, { id, count }];
+      } else {
+        return prevCart.map((cartProduct) => {
+          if (cartProduct.id === id) {
+            return { id, count: cartProduct.count + count };
+          }
+          return { id: cartProduct.id, count: cartProduct.count };
+        });
+      }
+    });
+  };
+
   const deleteFromShoppingCart = () => {};
 
   return (
     <div className="App">
       <BrowserRouter>
-        <NavBar cartSize={shoppingCart.length} />
+        <NavBar
+          cartSize={shoppingCart.reduce(
+            (totalProducts, product) => totalProducts + product.count,
+            0
+          )}
+        />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
+          <Route
+            path="/products/:id"
+            element={<ProductDetails updateShoppingCart={updateShoppingCart} />}
+          />
           <Route
             path="/cart"
             element={<ShoppingCart cartProducts={shoppingCart} />}

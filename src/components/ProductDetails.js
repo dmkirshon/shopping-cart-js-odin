@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const ProductDetails = () => {
+const ProductDetails = ({ updateShoppingCart }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({
     price: 0,
     rating: {},
   });
+  const [productCount, setProductCount] = useState(1);
 
   useEffect(() => {
     fetchProductDetails().catch(console.error);
@@ -19,6 +20,23 @@ const ProductDetails = () => {
 
     setProduct(productDetails);
     console.log(productDetails);
+  };
+
+  const handleProductCountChange = (event) => {
+    setProductCount(Number(event.target.value));
+  };
+
+  const handleAddToCart = () => {
+    updateShoppingCart(id, productCount);
+    setProductCount(1);
+  };
+
+  const handleDecrementProductCount = () => {
+    setProductCount((prevCount) => (prevCount !== 1 ? prevCount - 1 : 1));
+  };
+
+  const handleIncrementProductCount = () => {
+    setProductCount((prevCount) => prevCount + 1);
   };
 
   const productSummary = () => {
@@ -38,15 +56,28 @@ const ProductDetails = () => {
   const productPurchase = () => {
     return (
       <div className="product-purchase">
-        <button className="product-quantity-increase">-</button>
+        <button
+          className="product-quantity-decrement"
+          onClick={handleDecrementProductCount}
+        >
+          ➖
+        </button>
         <input
           type="Number"
           className="product-amount"
-          placeholder="1"
-          min="0"
+          value={productCount}
+          min="1"
+          onChange={handleProductCountChange}
         ></input>
-        <button className="product-quantity-decrease">+</button>
-        <button className="product-buy-submit">Add to Cart</button>
+        <button
+          className="product-quantity-increment"
+          onClick={handleIncrementProductCount}
+        >
+          ➕
+        </button>
+        <button className="product-buy-submit" onClick={handleAddToCart}>
+          Add to Cart
+        </button>
       </div>
     );
   };
