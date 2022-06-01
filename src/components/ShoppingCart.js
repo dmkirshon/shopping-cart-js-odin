@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import CartProduct from "./CartProduct";
 
@@ -25,6 +25,7 @@ const ShoppingCart = ({ cartProducts, updateShoppingCart }) => {
               key={product.id}
               productID={product.id}
               productToCartCount={product.count}
+              productToCartCost={product.cost}
               updateShoppingCart={updateShoppingCart}
             />
           );
@@ -34,14 +35,23 @@ const ShoppingCart = ({ cartProducts, updateShoppingCart }) => {
   };
 
   const totalPriceCart = () => {
-    return <div className="shopping-cart-total">Total Cart: $</div>;
+    let total = 0;
+    const totalPrice = cartProducts.reduce(
+      (total, product) => Number(total) + Number(product.cost),
+      total
+    );
+    return (
+      <div className="shopping-cart-total">
+        Total Cart: ${Number(totalPrice).toFixed(2)}
+      </div>
+    );
   };
 
   return (
     <div className="shopping-cart">
       {isCartEmpty() && shoppingCartEmptyMessage()}
       {productsInCart()}
-      {totalPriceCart()}
+      {!isCartEmpty() && totalPriceCart()}
     </div>
   );
 };

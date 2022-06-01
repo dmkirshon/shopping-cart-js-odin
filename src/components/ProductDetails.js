@@ -27,7 +27,7 @@ const ProductDetails = ({ addToShoppingCart }) => {
   };
 
   const handleAddToCart = () => {
-    addToShoppingCart(id, productCount);
+    addToShoppingCart(id, productCount, productCount * product.price);
     setProductCount(1);
   };
 

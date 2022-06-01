@@ -13,34 +13,46 @@ import "./App.css";
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
 
-  const addToShoppingCart = (id, count) => {
+  const addToShoppingCart = (id, count, cost) => {
     setShoppingCart((prevCart) => {
       const cartEmpty = prevCart.length === 0;
       const productNotInCart =
         prevCart.filter((cartProduct) => cartProduct.id === id).length === 0;
 
       if (cartEmpty) {
-        return [{ id, count }];
+        return [{ id, count, cost }];
       } else if (productNotInCart) {
-        return [...prevCart, { id, count }];
+        return [...prevCart, { id, count, cost }];
       } else {
         return prevCart.map((cartProduct) => {
           if (cartProduct.id === id) {
-            return { id, count: cartProduct.count + count };
+            return {
+              id,
+              count: cartProduct.count + count,
+              cost: cartProduct.cost,
+            };
           }
-          return { id: cartProduct.id, count: cartProduct.count };
+          return {
+            id: cartProduct.id,
+            count: cartProduct.count,
+            cost: cartProduct.cost,
+          };
         });
       }
     });
   };
 
-  const updateShoppingCart = (id, newCount) => {
+  const updateShoppingCart = (id, newCount, cost) => {
     setShoppingCart((prevCart) => {
       return prevCart.map((cartProduct) => {
         if (cartProduct.id === id) {
-          return { id, count: newCount };
+          return { id, count: newCount, cost };
         }
-        return { id: cartProduct.id, count: cartProduct.count };
+        return {
+          id: cartProduct.id,
+          count: cartProduct.count,
+          cost: cartProduct.cost,
+        };
       });
     });
   };
