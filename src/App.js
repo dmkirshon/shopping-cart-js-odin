@@ -65,7 +65,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter basename="/">
+      <BrowserRouter basename="/shopping-cart-js-odin">
         <NavBar
           cartSize={shoppingCart.reduce(
             (totalProducts, product) => totalProducts + product.count,
