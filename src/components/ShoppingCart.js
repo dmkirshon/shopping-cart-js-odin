@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CartProduct from "./CartProduct";
 
-const ShoppingCart = ({ cartProducts, updateShoppingCart }) => {
+const ShoppingCart = ({
+  cartProducts,
+  updateShoppingCart,
+  deleteFromShoppingCart,
+}) => {
   const isCartEmpty = () => {
     return cartProducts.length === 0;
   };
@@ -27,6 +31,7 @@ const ShoppingCart = ({ cartProducts, updateShoppingCart }) => {
               productToCartCount={product.count}
               productToCartCost={product.cost}
               updateShoppingCart={updateShoppingCart}
+              deleteFromShoppingCart={deleteFromShoppingCart}
             />
           );
         })}

@@ -57,7 +57,11 @@ function App() {
     });
   };
 
-  const deleteFromShoppingCart = () => {};
+  const deleteFromShoppingCart = (id) => {
+    setShoppingCart((prevCart) => {
+      return prevCart.filter((cartProduct) => cartProduct.id !== id);
+    });
+  };
 
   return (
     <div className="App">
@@ -81,6 +85,7 @@ function App() {
               <ShoppingCart
                 cartProducts={shoppingCart}
                 updateShoppingCart={updateShoppingCart}
+                deleteFromShoppingCart={deleteFromShoppingCart}
               />
             }
           />

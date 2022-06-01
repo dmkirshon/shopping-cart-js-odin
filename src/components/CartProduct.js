@@ -5,6 +5,7 @@ const CartProduct = ({
   productToCartCount,
   updateShoppingCart,
   productToCartCost,
+  deleteFromShoppingCart,
 }) => {
   const [product, setProduct] = useState({});
   const [productCount, setProductCount] = useState(productToCartCount);
@@ -74,7 +75,9 @@ const CartProduct = ({
   };
 
   const removeProduct = () => {
-    return <button>Remove</button>;
+    return (
+      <button onClick={() => deleteFromShoppingCart(productID)}>Remove</button>
+    );
   };
 
   return (
