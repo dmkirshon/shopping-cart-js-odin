@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CartProduct from "./CartProduct";
 
-const ShoppingCart = ({ cartProducts }) => {
+const ShoppingCart = ({ cartProducts, updateShoppingCart }) => {
   const isCartEmpty = () => {
     return cartProducts.length === 0;
   };
@@ -16,7 +16,7 @@ const ShoppingCart = ({ cartProducts }) => {
     );
   };
 
-  const ProductsInCart = () => {
+  const productsInCart = () => {
     return (
       <div className="shopping-cart-products">
         {cartProducts.map((product) => {
@@ -24,7 +24,8 @@ const ShoppingCart = ({ cartProducts }) => {
             <CartProduct
               key={product.id}
               productID={product.id}
-              productCount={product.count}
+              productToCartCount={product.count}
+              updateShoppingCart={updateShoppingCart}
             />
           );
         })}
@@ -32,15 +33,15 @@ const ShoppingCart = ({ cartProducts }) => {
     );
   };
 
-  const TotalPriceCart = () => {
+  const totalPriceCart = () => {
     return <div className="shopping-cart-total">Total Cart: $</div>;
   };
 
   return (
     <div className="shopping-cart">
       {isCartEmpty() && shoppingCartEmptyMessage()}
-      <ProductsInCart />
-      <TotalPriceCart />
+      {productsInCart()}
+      {totalPriceCart()}
     </div>
   );
 };

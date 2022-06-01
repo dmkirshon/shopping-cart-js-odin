@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const ProductDetails = ({ updateShoppingCart }) => {
+const ProductDetails = ({ addToShoppingCart }) => {
   const { id } = useParams();
 
   const [product, setProduct] = useState({
     price: 0,
     rating: {},
   });
+
   const [productCount, setProductCount] = useState(1);
 
   useEffect(() => {
@@ -19,7 +20,6 @@ const ProductDetails = ({ updateShoppingCart }) => {
     const productDetails = await fetchProduct.json();
 
     setProduct(productDetails);
-    console.log(productDetails);
   };
 
   const handleProductCountChange = (event) => {
@@ -27,7 +27,7 @@ const ProductDetails = ({ updateShoppingCart }) => {
   };
 
   const handleAddToCart = () => {
-    updateShoppingCart(id, productCount);
+    addToShoppingCart(id, productCount);
     setProductCount(1);
   };
 

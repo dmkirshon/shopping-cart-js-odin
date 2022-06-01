@@ -13,7 +13,7 @@ import "./App.css";
 function App() {
   const [shoppingCart, setShoppingCart] = useState([]);
 
-  const updateShoppingCart = (id, count) => {
+  const addToShoppingCart = (id, count) => {
     setShoppingCart((prevCart) => {
       const cartEmpty = prevCart.length === 0;
       const productNotInCart =
@@ -34,6 +34,17 @@ function App() {
     });
   };
 
+  const updateShoppingCart = (id, newCount) => {
+    setShoppingCart((prevCart) => {
+      return prevCart.map((cartProduct) => {
+        if (cartProduct.id === id) {
+          return { id, count: newCount };
+        }
+        return { id: cartProduct.id, count: cartProduct.count };
+      });
+    });
+  };
+
   const deleteFromShoppingCart = () => {};
 
   return (
@@ -50,11 +61,16 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route
             path="/products/:id"
-            element={<ProductDetails updateShoppingCart={updateShoppingCart} />}
+            element={<ProductDetails addToShoppingCart={addToShoppingCart} />}
           />
           <Route
             path="/cart"
-            element={<ShoppingCart cartProducts={shoppingCart} />}
+            element={
+              <ShoppingCart
+                cartProducts={shoppingCart}
+                updateShoppingCart={updateShoppingCart}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>
