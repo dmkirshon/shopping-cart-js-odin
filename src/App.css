@@ -275,11 +275,37 @@ nav a:visited{
   display: flex;
   flex-direction: column;
   justify-content: start;
-  align-items: center;
   flex: 1;
-  padding: 10rem;
+  padding: 5rem;
 
   background-color: whitesmoke;
+}
+
+.shopping-cart-checkout {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: 1rem;
+  font-size: x-large;
+}
+
+.shopping-cart-checkout-button {
+  font-size: large;
+  font-weight: bolder;
+
+  background-color: rgb(255, 150, 112);
+  
+  padding: .5rem;
+  border-radius: 10px;
+}
+
+.shopping-cart-checkout-button:hover {
+  background-color: rgb(255, 84, 22);
+  box-shadow: 1px 1px 1px 0px;
+
+  cursor: pointer;
 }
 
 .shopping-cart-products {
@@ -302,7 +328,6 @@ nav a:visited{
 
   background-color: white;
   padding: 1rem;
-  margin-right: 2rem;
 
 }
 
@@ -312,6 +337,7 @@ nav a:visited{
   align-items: center;
   flex-direction: column;
 
+  margin-left: 2rem;
   flex: 1;
 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const CartProduct = ({
   productID,
@@ -82,11 +83,13 @@ const CartProduct = ({
 
   return (
     <div className="cart-product">
-      <img
-        className="cart-product-image"
-        src={product.image}
-        alt={product.title}
-      />
+      <Link to={`/products/${productID}`}>
+        <img
+          className="cart-product-image"
+          src={product.image}
+          alt={product.title}
+        />
+      </Link>
       <div className="cart-product-info">
         <p className="cart-product-title">{product.title}</p>
         <div className="cart-product-info-amount">

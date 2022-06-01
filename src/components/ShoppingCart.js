@@ -52,11 +52,20 @@ const ShoppingCart = ({
     );
   };
 
+  const checkoutButton = () => {
+    return <button className="shopping-cart-checkout-button">Check Out</button>;
+  };
+
   return (
     <div className="shopping-cart">
       {isCartEmpty() && shoppingCartEmptyMessage()}
       {productsInCart()}
-      {!isCartEmpty() && totalPriceCart()}
+      {!isCartEmpty() && (
+        <div className="shopping-cart-checkout">
+          {totalPriceCart()}
+          {checkoutButton()}
+        </div>
+      )}
     </div>
   );
 };
