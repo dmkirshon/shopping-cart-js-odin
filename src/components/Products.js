@@ -28,11 +28,9 @@ const Products = () => {
               src={productInfo.image}
               alt={productInfo.title}
             />
-          </Link>
-          <div className="products-information">
             <p className="products-title">{productInfo.title}</p>
             <p className="products-rating">{productInfo.rating.rate} ⭐️</p>
-          </div>
+          </Link>
         </div>
       );
     });

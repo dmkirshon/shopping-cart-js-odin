@@ -58,7 +58,7 @@ const CartProduct = ({
           ➖
         </button>
         <input
-          className="cart-product-count-input"
+          className="product-amount"
           value={productCount}
           onChange={handleProductCountChange}
         ></input>
@@ -77,7 +77,12 @@ const CartProduct = ({
 
   const removeProduct = () => {
     return (
-      <button onClick={() => deleteFromShoppingCart(productID)}>Remove</button>
+      <button
+        className="cart-product-remove"
+        onClick={() => deleteFromShoppingCart(productID)}
+      >
+        Remove
+      </button>
     );
   };
 

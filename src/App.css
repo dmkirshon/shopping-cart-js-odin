@@ -27,6 +27,8 @@ nav {
   align-items: center;
   margin: 0;
   padding: 1rem;
+
+  z-index: 1;
 }
 
 .nav-logo {
@@ -123,14 +125,15 @@ nav a:visited {
 /* Products Page Style */
 
 .products {
+  padding: 2vw 10vw;
   justify-content: center;
   align-items: center;
-  padding: 2vw 10vw;
   flex: 1;
   background-color: whitesmoke;
 }
 
 .products-main {
+  margin-top: 2em;
   display: flex;
   flex-flow: row wrap;
   gap: 3vw;
@@ -145,19 +148,21 @@ nav a:visited {
   height: 300px;
 
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 
   border: 3px solid lightgrey;
   border-radius: 10px;
   background-color: white;
+
+  overflow: hidden;
 }
 
 .products-image {
   width: 140px;
   height: 140px;
   background-color: white;
-  padding: 1rem;
+  padding: 1em;
+  margin: 1em;
 
   transition: all 0.5s;
 }
@@ -170,19 +175,11 @@ nav a:visited {
   z-index: 1;
 }
 
-.products-information {
-  height: 10vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  border-top: 3px solid lightgrey;
-}
-
 .products-title {
+  padding: 0.5em;
   width: 300px;
   font-size: medium;
+  border-top: 3px solid lightgrey;
 }
 
 .products-rating {
@@ -249,7 +246,7 @@ nav a:visited {
 }
 
 .product-title {
-  text-decoration: underline;
+  margin: 2em;
 }
 
 .product-details {
@@ -274,8 +271,39 @@ nav a:visited {
 
 .product-summary-description {
   text-align: justify;
+  line-height: 1.5;
 }
 
+.product-summary-values {
+  display: flex;
+  justify-content: center;
+}
+
+.product-summary-price {
+  padding: 1em;
+}
+
+.product-summary-rating {
+  padding: 1em;
+}
+
+.product-amount {
+  margin: 0 1em;
+  text-align: center;
+  border-radius: 1em;
+}
+.product-buy-submit {
+  margin-left: 1em;
+  padding: 0.5em;
+  border: none;
+  box-shadow: 0px 0px 5px 1px;
+  border-radius: 1em;
+}
+
+.product-buy-submit:hover {
+  color: orangered;
+  box-shadow: 0px 0px 5px 1px;
+}
 /* Shopping Cart Page */
 
 .shopping-cart {
@@ -355,5 +383,20 @@ nav a:visited {
 
 .cart-product-info-amount {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
+}
+
+.cart-product-remove {
+  margin-left: 1em;
+  padding: 0.5em;
+  border: none;
+  box-shadow: 0px 0px 5px 1px;
+  border-radius: 1em;
+}
+
+.cart-product-remove:hover {
+  color: orangered;
+  box-shadow: 0px 0px 5px 1px;
 }

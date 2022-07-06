@@ -46,12 +46,16 @@ const ProductDetails = ({ addToShoppingCart }) => {
     return (
       <div className="product-summary">
         <p className="product-summary-description">
-          Description: {product.description}
+          <strong>Description:</strong> {product.description}
         </p>
-        <p className="product-summary-price">${product.price.toFixed(2)}</p>
-        <p className="product-summary-rating">
-          {product.rating.rate} ⭐️ ({product.rating.count} reviews)
-        </p>
+        <div className="product-summary-values">
+          <p className="product-summary-price">
+            Price: ${product.price.toFixed(2)}
+          </p>
+          <p className="product-summary-rating">
+            {product.rating.rate} ⭐️ ({product.rating.count} reviews)
+          </p>
+        </div>
       </div>
     );
   };
