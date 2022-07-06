@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import shoppingImage from "../assets/shoppingImage.svg";
 
 const Home = () => {
@@ -12,14 +13,18 @@ const Home = () => {
           alt="Man with megaphone shouting sale!"
           className="home-image"
         />
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet,
-          cupiditate maxime. Qui impedit inventore, voluptatibus quidem nihil
-          iste maxime, eveniet possimus, perferendis est veritatis adipisci
-          repellat reiciendis. Atque, exercitationem nihil.
-        </p>
+        <span>
+          <h2>Welcome to 🔥ShopDrop🔥, home to all your shopping needs!</h2>
+          <br></br>
+          <p>
+            Check out our variety of products and leave happy knowing your
+            purchase will be handled with speed.
+          </p>
+        </span>
       </div>
-      <button className="home-shop-button">Shop Now!</button>
+      <Link className="home-shop-link" to="/products">
+        Shop Now!
+      </Link>
     </div>
   );
 };
