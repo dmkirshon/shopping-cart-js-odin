@@ -18,4 +18,6 @@
     - jest-dom
 - Build process
 
+Thanks to https://fakestoreapi.com for API listings of products.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
