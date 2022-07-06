@@ -44,7 +44,7 @@ const Products = () => {
     <div className="products">
       <h1>Products</h1>
       {!pageLoaded ? (
-        <div className="loading-products">
+        <div className="loading">
           <span>Loading</span>
         </div>
       ) : (

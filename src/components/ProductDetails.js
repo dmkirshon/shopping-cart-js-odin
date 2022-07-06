@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 const ProductDetails = ({ addToShoppingCart }) => {
   const { id } = useParams();
 
+  const [pageLoaded, setPageLoaded] = useState(false);
+
   const [product, setProduct] = useState({
     price: 0,
     rating: {},
@@ -20,6 +22,7 @@ const ProductDetails = ({ addToShoppingCart }) => {
     const productDetails = await fetchProduct.json();
 
     setProduct(productDetails);
+    setPageLoaded(true);
   };
 
   const handleProductCountChange = (event) => {
@@ -84,18 +87,26 @@ const ProductDetails = ({ addToShoppingCart }) => {
 
   return (
     <div className="product">
-      <h2 className="product-title">{product.title}</h2>
-      <div className="product-details">
-        <img
-          className="product-image"
-          src={product.image}
-          alt={product.title}
-        />
-        <div className="product-info">
-          {productSummary()}
-          {productPurchase()}
+      {!pageLoaded ? (
+        <div className="loading">
+          <span>Loading</span>
         </div>
-      </div>
+      ) : (
+        <div className="product-main">
+          <h2 className="product-title">{product.title}</h2>
+          <div className="product-details">
+            <img
+              className="product-image"
+              src={product.image}
+              alt={product.title}
+            />
+            <div className="product-info">
+              {productSummary()}
+              {productPurchase()}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
